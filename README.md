@@ -96,7 +96,9 @@ Recognition model is CRNN. It is composed of 3 main components:
 2.	Sequence labeling (LSTM).
 3.	Decoding (CTC). Word beam search decoding is a Connectionist Temporal Classification (CTC) decoding algorithm. It is used for sequence recognition tasks like Handwritten Text Recognition (HTR) or Automatic Speech Recognition (ASR). The following illustration shows a HTR system with its Convolutional Neural Network (CNN) layers, Recurrent Neural Network (RNN) layers and the final CTC (loss and decoding) layer. Word beam search decoding is placed right after the RNN layers to decode the output, see the red dashed rectangle in the illustration.
 ### Handwritten Text Recognition (HTR) with CNN, RNN and CTC.
+
 ![image](https://user-images.githubusercontent.com/71966691/99430889-efe69580-292f-11eb-99f5-ffd626f0d3e2.png)
+
 Training pipeline for the recognition part is a modified version from deep-text-recognition-benchmark. Data synthesis is based on TextRecognitionDataGenerator.
 
 ### 2.5 Resources
@@ -133,6 +135,7 @@ c.	Decoding: Decoding is used for sequence recognition task, like Handwritten Te
 •	Probability of extracted text for each bounding box is used to check the confidence level of extraction.
 
 ### Task2_Result:
+
 ![image](https://user-images.githubusercontent.com/71966691/99431481-d8f47300-2930-11eb-812f-bfcd3abe6180.png)
 
 
@@ -149,6 +152,7 @@ There has been a significant improvement in speech to text conversion, current v
 
 ### 3.4 Machine Leaning process flow: - 
 It comprises of two models an acoustic model and a language model. Large vocabulary systems also use a pronunciation model. No single system can transcribe all the languages i.e. the Speech to text models (speech recognizer) are language specific. The transcription quality also depends on the speaker, the style of speech and the environmental conditions, dialect, application domain, type of speech, and communication channel. Speech to text conversion is useful in many applications like controlling devices using spoken words, audio document transcription etc. Each use has specific requirements in terms of latency, memory constraints, vocabulary size, and adaptive features.
+
 ![image](https://user-images.githubusercontent.com/71966691/99431627-122ce300-2931-11eb-96b8-51d6d0c70ee9.png)
 
 ### Language model: 
@@ -191,7 +195,9 @@ It combines information about language structure with the composition of the aud
 #### Supported language models:
 •	Broadband models are for audio that is sampled at greater than or equal to 16 kHz. Use broadband models for responsive, real-time applications, for example, for live-speech applications.
 •	Narrowband models are for audio that is sampled at 8 kHz. Use narrowband models for offline decoding of telephone speech, which is the typical use for this sampling rate.
+
 ![image](https://user-images.githubusercontent.com/71966691/99432563-553b8600-2932-11eb-8622-3c23a53360fc.png)
+
 Link for complete models list- https://cloud.ibm.com/docs/speech-to-text?topic=speech-to-text-models
 
 #### Language and model for our application
@@ -220,7 +226,9 @@ Notes about audio formats
 •	For the audio/wav format, the service accepts audio with a maximum of nine channels.
 Audio Format: - Waveform Audio File Format (WAV) (audio/wav) is a container format that is often used for uncompressed audio streams, but it can contain compressed audio, as well. The service supports WAV audio that uses any encoding. It accepts WAV audio with a maximum of nine channels (due to an FFmpeg limitation).
 We are using wav audio format. Required parvameters and Optional parameters for wav format are given below.
+
 ![image](https://user-images.githubusercontent.com/71966691/99433040-03dfc680-2933-11eb-8cb0-594f25056a80.png)
+
 #### Output features
 Word timestamps (timestamps=True/False):
 The timestamps parameter tells the service whether to produce timestamps for the words it transcribes. By default, the service reports no timestamps. Setting timestamps to true directs the service to report the beginning and ending time in seconds for each word relative to the start of the audio.
@@ -229,6 +237,7 @@ The following example requests show the effect of using the end_of_phrase_silenc
 Split transcript at phrase end (split_transcript_at_phrase_end=True/False):
 The split_transcript_at_phrase_end parameter directs the service to split the transcript into multiple final results based on semantic features of the input. Setting the parameter to true causes the service to split the transcript at the conclusion of meaningful phrases such as sentences. The service bases its understanding of semantic features on the base language model that you use with the request along with a custom language model or grammar that you use. Custom language models and grammars can influence how and where the service splits a transcript.
 ### Note: - There are several other parameters available which can be used as per the problem in hand. 
+
 Reference link: https://cloud.ibm.com/docs/speech-to-text?topic=speech-to-text-output
 
 Advantages of using IBM Watson: -
@@ -245,6 +254,7 @@ Limitation: - This Is a paid software (Free trail is available which is good eno
   fuzz.token_set_ratio, fuzz.token_sort_ratio, fuzz.ratio and fuzz.partial_ratio
   
 ### Task3_Result
+
 ![image](https://user-images.githubusercontent.com/71966691/99433930-30e0a900-2934-11eb-8b7f-a8b59762bff7.png)
 
 
