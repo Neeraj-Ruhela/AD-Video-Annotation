@@ -83,7 +83,9 @@ With Optical Character Recognition(OCR), our objective is to detect, search and 
 •	Better visualization of text.
 
 ### 2.3 Literature Review
-The roots of OCR can be traced back to systems before the inventions of computers. The earliest OCR systems were mechanical devices that were able to recognize characters or text, but had very slow speeds and also low accuracies. In 1951, M. Sheppard invented a reading robot named GISMO that could be considered as the earliest work on modern OCR. GISMO could read musical notations as well as words on a printed page one by one. However, it could only recognize only a few characters, 23 to be precise. The machine also had the capability to copy a typewritten page. In 1954, J. Rainbow devised a machine that could read uppercase typewritten English characters, one per minute. However, the early OCR systems were criticized due to errors and slow recognition speeds. Hence, not much research efforts were put on the topic during the 60's and the 70’s. The only developments were done on government agencies and large corporations like banks, newspapers and airlines etc. Because of the complexities associated with recognition, it was felt that there should be standardized OCR fonts for easing the task of recognition for OCR. Hence, OCRA and OCRB were developed by ANSI and
+The roots of OCR can be traced back to systems before the inventions of computers. The earliest OCR systems were mechanical devices that were able to recognize characters or text, but had very slow speeds and also low accuracies. In 1951, M. Sheppard invented a reading robot named GISMO that could be considered as the earliest work on modern OCR. GISMO could read musical notations as well as words on a printed page one by one. 
+However, it could only recognize only a few characters, 23 to be precise. The machine also had the capability to copy a typewritten page. In 1954, J. Rainbow devised a machine that could read uppercase typewritten English characters, one per minute. However, the early OCR systems were criticized due to errors and slow recognition speeds. Hence, not much research efforts were put on the topic during the 60's and the 70’s.
+The only developments were done on government agencies and large corporations like banks, newspapers and airlines etc. Because of the complexities associated with recognition, it was felt that there should be standardized OCR fonts for easing the task of recognition for OCR. Hence, OCRA and OCRB were developed by ANSI and
 EMCA in 1970, that provided comparatively acceptable recognition rates. During the past thirty years, substantial research has been done on OCR. This has led to the emergence of document image analysis (DIA), multi-lingual, handwritten and omni-font OCRs. 
 
 ### 2.4 Machine Learning Process Flow
@@ -204,19 +206,26 @@ Link for complete models list- https://cloud.ibm.com/docs/speech-to-text?topic=s
                             Language: - English (United States)         &         Narrow band Model: - en-US_ShortForm_NarrowbandModel   
 
 The US English short-form model, en-US_ShortForm_NarrowbandModel, can improve speech recognition for Interactive Voice Response (IVR) and Automated Customer Support solutions. The short-form model is trained to recognize the short utterances that are frequently expressed in customer support settings like automated support call centers. In addition to being tuned for short utterances in general, the model is also tuned for precise utterances such as digits, single-character word and name spellings, and yes-no responses.
-The en-US_ShortForm_NarrowbandModel is optimal for the kinds of responses that are common to human-to-machine exchanges, such as the use case of IBM® Voice Agent with Watson™. The en-US_NarrowbandModel is generally optimal for human-to-human conversations. However, depending on the use case and the nature of the exchange, some users might find the short-form model suitable for human-to-human conversations as well. Given this flexibility and overlap, you might experiment with both models to determine which works best for your application. In either case, applying a custom language model with a grammar to the short-form model can further improve recognition results.
+The en-US_ShortForm_NarrowbandModel is optimal for the kinds of responses that are common to human-to-machine exchanges, such as the use case of IBM® Voice Agent with Watson™.
+
+The en-US_NarrowbandModel is generally optimal for human-to-human conversations. However, depending on the use case and the nature of the exchange, some users might find the short-form model suitable for human-to-human conversations as well. Given this flexibility and overlap, you might experiment with both models to determine which works best for your application. In either case, applying a custom language model with a grammar to the short-form model can further improve recognition results.
+
 As with all models, noisy environments can adversely impact the results. For example, background acoustic noise from airports, moving vehicles, conference rooms, and multiple speakers can reduce transcription accuracy. Audio from speaker phones can also reduce accuracy due to the echo common to such devices. Using the parameters available for speech activity detection can counteract such effects and help improve speech transcription accuracy. Applying a custom acoustic model can further fine-tune the acoustics for speech recognition, but only as a final measure.
 
 ### 3.8 Pre-Processing Steps (Input features)
 Sampling rate: - Sampling rate (or sampling frequency) is the number of audio samples that are taken per second.
 •	Broadband models are used for audio that is sampled at no less than 16 kHz, which IBM® recommends for responsive, real-time applications (for example, for live-speech applications). Broadband model converts audio recorded at higher sampling rates to 16 kHz.
+
 •	Narrowband models are used for audio that is sampled at no less than 8 kHz, which is the rate that is typically used for telephonic audio. It converts the audio to 8 kHz.
 The service supports both broadband and narrowband audio for most languages and formats. It automatically adjusts the sampling rate of your audio to match the model that you specify before it recognizes speech.
+
 Bit rate: -  is the number of bits of data that is sent per second. The bit rate for an audio stream is measured in kilobits per second (kbps). The bit rate is calculated from the sampling rate and the number of bits stored per sample. For speech recognition, IBM® recommends that you record 16 bits per sample for your audio.
+
 Compression: - is used by many audio formats to reduce the size of the audio data. Compression reduces the number of bits stored per sample and thus the bit rate. Some formats use no compression, but most use one of the basic types of compression:
 •	Lossless compression reduces the size of the audio with no loss of quality, but the compression ratio is typically small.
 •	Lossy compression reduces the size of the audio by as much as 10 times, but some data and some quality is irretrievably lost in the compression.
 With the Speech to Text service, you can safely use lossy compression to maximize the amount of audio that you can send to the service with a recognition request. Because the dynamic range of the human voice is more limited than, say, music, speech can accommodate a bit rate that is much lower than other types of audio. For speech recognition, IBM® recommends that you use 16 bits per sample for your audio and employ a format that compresses the audio data.
+
 Channels: -  indicate the number of streams of the recorded audio:
 •	Monaural (or mono) audio has only a single channel.
 •	Stereophonic (or stereo) audio typically has two channels.
@@ -224,6 +233,7 @@ The Speech to Text service accepts audio with a maximum of 16 channels. Because 
 Notes about audio formats
 •	For the audio/l16 format, you must specify the number of channels if your audio has more than one channel.
 •	For the audio/wav format, the service accepts audio with a maximum of nine channels.
+
 Audio Format: - Waveform Audio File Format (WAV) (audio/wav) is a container format that is often used for uncompressed audio streams, but it can contain compressed audio, as well. The service supports WAV audio that uses any encoding. It accepts WAV audio with a maximum of nine channels (due to an FFmpeg limitation).
 We are using wav audio format. Required parvameters and Optional parameters for wav format are given below.
 
@@ -232,8 +242,10 @@ We are using wav audio format. Required parvameters and Optional parameters for 
 #### Output features
 Word timestamps (timestamps=True/False):
 The timestamps parameter tells the service whether to produce timestamps for the words it transcribes. By default, the service reports no timestamps. Setting timestamps to true directs the service to report the beginning and ending time in seconds for each word relative to the start of the audio.
+
 End of phrase silence time (end_of_phrase_silence_time=0.8 seconds):
 The following example requests show the effect of using the end_of_phrase_silence_time parameter. The audio speaks the phrase "one two three four five six," with a one-second pause between the words "three" and "four." The speaker might be reading a six-digit number from an identification card, for example, and pause to confirm the number.
+
 Split transcript at phrase end (split_transcript_at_phrase_end=True/False):
 The split_transcript_at_phrase_end parameter directs the service to split the transcript into multiple final results based on semantic features of the input. Setting the parameter to true causes the service to split the transcript at the conclusion of meaningful phrases such as sentences. The service bases its understanding of semantic features on the base language model that you use with the request along with a custom language model or grammar that you use. Custom language models and grammars can influence how and where the service splits a transcript.
 ### Note: - There are several other parameters available which can be used as per the problem in hand. 
@@ -283,11 +295,15 @@ Object Detection: Locate the presence of objects with a bounding box and types o
 
 ImageAI provides convenient, flexible and powerful methods to perform object detection on videos. The video object detection class provided supports Resnet. To perform video object detection, we have to first download resnet50_coco_best_v2.0.1.ImageAI now allows live-video detection with support for camera inputs. 
 Using OpenCV's VideoCapture() function, you can load live-video streams from a device camera, cameras connected by cable or IP cameras, and parse it into ImageAI's detectObjectsFromVideo() and detectCustomObjectsFromVideo() functions. All features that are supported for detecting objects in a video file is also available for detecting objects in a camera's live-video feed.
+
 #### Network Structure of ResNet50.
 ![image](https://user-images.githubusercontent.com/71966691/99434366-b5332c00-2934-11eb-8bf3-e3dc7d829c33.png)
+
 Resnet: A residual neural network is an artificial neural network of a kind that builds on constructs known from pyramidal cells in the cerebral cortex. Residual neural networks do this by utilizing skip connections, or shortcuts to jump over some layers.
+
 #### Network Structure of Tiny_yolo_v3.
 ![image](https://user-images.githubusercontent.com/71966691/99434605-fdeae500-2934-11eb-8ede-2e8a5468f644.png)
+
 TinyYolo_V3: defined a variation of the YOLO architecture called Tiny-YOLO. The Tiny-YOLO architecture is approximately 442% faster than its larger big brothers, achieving upwards of 244 FPS on a single GPU.
 
 ### 4.5 Resources:
@@ -321,11 +337,17 @@ Note: I have shown the output for different videos in above result.
 
 ## Other Usefule Terms:
 
-Sampling Rate: Number of samples per second used to code the speech signal (usually 16000, i.e. 16 kHz for a bandwidth of 8 kHz). Telephone speech is sampled at 8 kHz. 16 kHz is generally regarded as sufficient for speech recognition and synthesis. The audio standards use sample rates of 44.1 kHz (Compact Disc) and 48 kHz (Digital Audio Tape). Note that signals must be filtered prior to sampling, and the maximum frequency that can be represented is half the sampling frequency. In practice a higher sample rate is used to allow for non-ideal filters.
+Sampling Rate: Number of samples per second used to code the speech signal (usually 16000, i.e. 16 kHz for a bandwidth of 8 kHz). Telephone speech is sampled at 8 kHz. 16 kHz is generally regarded as sufficient for speech recognition and synthesis. The audio standards use sample rates of 44.1 kHz (Compact Disc) and 48 kHz (Digital Audio Tape). 
+Note that signals must be filtered prior to sampling, and the maximum frequency that can be represented is half the sampling frequency. In practice a higher sample rate is used to allow for non-ideal filters.
+
 Sampling Resolution: Number of bits used to code each signal sample. Speech is normally stored in 16 bits. Telephony quality speech is sampled at 8 kHz with a 12bit dynamic range (stored in 8 bits with a non-linear function, i.e. A-law or U-law). The dynamic range of the ear is about 20 bits.
+
 Lexicon or pronunciation dictionary: A list of words with pronunciations. For a speech recognizer it includes all words known by the system, where each word has one or more pronunciations with associated probabilities
+
 Phoneme: An abstract representation of the smallest phonetic unit in a language which conveys a distinction in meaning. For example, the sounds /d/ and /t/ are separate phonemes in English because they distinguish words such as do and to. To illustrate phoneme differences across languages, the two /u/-like vowels in the French words tu and tout are not distinct phonemes in English, whereas the two /i/-like vowels in the English words seat and sit are not distinct phonemes in French.
+
 Pitch or F0: The pitch is the fundamental frequency of a speech signal. In practice, the pitch period can be obtained from the position of the maximum of the autocorrelation function of the signal.
+
 Fast Fourier transform: - A fast Fourier transform is an algorithm that computes the discrete Fourier transform of a sequence, or its inverse. Fourier analysis converts a signal from its original domain to a representation in the frequency domain and vice versa.
 
 ## References
