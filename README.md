@@ -1,5 +1,3 @@
-Video attribution is a multi-label classification problem that aims at converting the video files into formats like audio, text, and image and extract the semantics of the detected object.
-
 Spending on digital advertising has risen each year even as TV and print advertising declines. Understanding the value of digital advertising requires understanding of how  value is attributed to each activity. Understanding the true worth of these channels is key to any company’s success.
 
 What an advertiser wants to know is how digital advertising really affects the bottom line.
