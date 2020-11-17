@@ -347,31 +347,3 @@ Phoneme: An abstract representation of the smallest phonetic unit in a language 
 Pitch or F0: The pitch is the fundamental frequency of a speech signal. In practice, the pitch period can be obtained from the position of the maximum of the autocorrelation function of the signal.
 
 Fast Fourier transform: - A fast Fourier transform is an algorithm that computes the discrete Fourier transform of a sequence, or its inverse. Fourier analysis converts a signal from its original domain to a representation in the frequency domain and vice versa.
-
-## References
-https://nanonets.com/blo
-https://pypi.org/project/easyocr/
-https://github.com/JaidedAI/EasyOCR
-https://github.com/Uberi/speech_recognition
-https://deepspeech.readthedocs.io/en/v0.9.1/
-https://imageai.readthedocs.io/en/latest/video/ 
-https://github.com/githubharald/CTCWordBeamSearch
-https://en.wikipedia.org/wiki/Residual_neural_network
-https://www.easyproject.cn/easyocr/en/index.jsp#readme
-https://www.vocapia.com/speech-to-text-technology.html
-https://link.springer.com/article/10.1007/s13735-012-0016-2
-https://en.wikipedia.org/wiki/Optical_character_recognition
-https://www.youtube.com/watch?v=NRAqIjXaZvw&list=LL&index=3
-https://www.youtube.com/watch?v=vSwEbscJTKk&list=LL&index=9
-https://www.youtube.com/watch?v=P9GLDezYVX4&list=LL&index=12
-https://stackabuse.com/object-detection-with-imageai-in-python/
-https://analyticsindiamag.com/top-8-algorithms-for-object-detection/ 
-https://cloud.ibm.com/docs/speech-to-text?topic=speech-to-text-summary
-https://cloud.ibm.com/docs/speech-to-text?topic=speech-to-text-models
-https://machinelearningmastery.com/object-recognition-with-deep-learning/ 
-https://www.kaggle.com/shivamb/objects-bounding-boxes-using-resnet50-imageai
-https://github.com/OlafenwaMoses/ImageAI/blob/master/imageai/Detection/VIDEO.md 
-https://jonathan-hui.medium.com/object-detection-speed-and-accuracy-comparison-faster-r-cnn-r-fcn-ssd-and-yolo-5425656ae359
-https://www.ftdocs.com/new-blog/2018/7/10/why-you-need-ocr#:~:text=OCR%20can%20make%20your%20life%20easier%20by%3A&text=Reduce%20or%20eliminate%20costly%20data,and%20dramatically%20reducing%20processing%20times
-https://medium.com/@nandacoumar/optical-character-recognition-ocr-image-opencv-pytesseract-and-easyocr-62603ca4357#:~:text=Limitations%20of%20both%20Tesseract%20and%20EasyOCR%3A&text=If%20a%20document%20contains%20languages,distorted%20perspective%2C%20and%20complex%20background
-
