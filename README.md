@@ -1,4 +1,17 @@
 Video attribution is a multi-label classification problem that aims at converting the video files into formats like audio, text, and image and extract the semantics of the detected object.
+![image](https://user-images.githubusercontent.com/71966691/99437588-b1090d80-2938-11eb-868a-a67307b4ed37.png)
+
+Spending on digital advertising has risen each year even as TV and print advertising declines.
+Understanding the value of digital advertising requires understanding of how value is
+attributed to each activity. Understanding the true worth of these channels is key to any
+company’s success.
+What an advertiser wants to know is how digital advertising really affects the bottom line.
+You spend more, do you get more? How do you know what works and what does not?
+Do combinations of advertising work best? How does advertising work?
+Now a days there are ample promotional videos available in the market to analyze so before launching a new product client has to analyze history of events and understand customer acceptance. By analyzing these videos and its sentiments client may strategize market penetration and get benefit out of it. To do so there are lots of man force required who will watch the video and create notes for the events in it.
+However due to lots of data it is a tedious job and involves cost. And also due to different skill set it is challenging. Goal is to automate the whole process of video annotation. 
+
+I have divided the projects in 4 tasks.
 
 ## TASK 1: - Frame and Audio Extraction
 •	Video frame extraction, Audio extraction, Grey scaling extracted video frames.
@@ -163,6 +176,7 @@ The various options that we tried are discussed below:
  It is an open source library. Also has good detailed documentation to custom train your models. 
  The transcription quality was not good for initial sentences in our use case. This model is sensitive to framerate of audio and doesn’t provide auto adjust to frame rate. 
  The complete RNN model is illustrated in the figure below.
+ 
  ![image](https://user-images.githubusercontent.com/71966691/99431834-5cae5f80-2931-11eb-9a70-ee0d4dc369b5.png)
  
 #### 2. SpeechRecognition (pip install SpeechRecognition): -
@@ -224,25 +238,109 @@ Advantages of using IBM Watson: -
 
 Limitation: - This Is a paid software (Free trail is available which is good enough to tune the model).
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### 3.9 Important Points
+•	Confidence level of each extracted text line is used to refer the transcription quality.
+•	FuzzyWuzzy Fuzzy string matching like a boss. It uses Levenshtein Distance to calculate the differences between sequences in a simple-to-use package.
+  fuzz.token_set_ratio, fuzz.token_sort_ratio, fuzz.ratio and fuzz.partial_ratio
   
+### Task3_Result
+![image](https://user-images.githubusercontent.com/71966691/99433930-30e0a900-2934-11eb-8b7f-a8b59762bff7.png)
 
 
+## Task_4: - Object Detection
 
+### 4.1 Problem Statement
+We need to detect the object in ad-video. We can perform this activity from a video or from extracted video frames. Here object detection is done directly from video. 
 
+### 4.2 Objective
+With objection detection we want to understand is there any influence of a particular object or any person in the ad-video.
+The key benefit we get using object detection are:
+3.	Influence of any high profile person
+4.	Importance of any product 
+5.	Importance of theme and color background used 
+
+### 4.3 Literature Review
+Object detection and tracking is one of the critical areas of research due to routine change in motion of object and variation in scene size, occlusions, appearance variations, and ego-motion and illumination changes. Specifically, feature selection is the vital role in object tracking. It is related to many real time applications like vehicle perception, video surveillance and so on. In order to overcome the issue of detection, tracking related to object movement and appearance. Most of the algorithm focuses on the tracking algorithm to smoothen the video sequence. On the other hand, few methods use the prior available information about object shape, color, texture and so on. Recently live cameras also used for objection detection, and the result is very good.
+
+### 4.4 Machine Learning Process Flow
+![image](https://user-images.githubusercontent.com/71966691/99434185-80bf7000-2934-11eb-8b2f-fb153b30a881.png)
+
+Video Sequence: The detection of an object in video sequence plays a significant role in many applications such as movie video, ad-video, live camera recorded video with time
+Object Recognition: Object recognition is a general term to describe a collection of related computer vision tasks that involve identifying objects in video or images.
+Object Localization: Locate the presence of objects in an image and indicate their location with a bounding box.
+Object Detection: Locate the presence of objects with a bounding box and types or classes of the located objects in an image with detection probability.
+
+ImageAI provides convenient, flexible and powerful methods to perform object detection on videos. The video object detection class provided supports Resnet. To perform video object detection, we have to first download resnet50_coco_best_v2.0.1.ImageAI now allows live-video detection with support for camera inputs. 
+Using OpenCV's VideoCapture() function, you can load live-video streams from a device camera, cameras connected by cable or IP cameras, and parse it into ImageAI's detectObjectsFromVideo() and detectCustomObjectsFromVideo() functions. All features that are supported for detecting objects in a video file is also available for detecting objects in a camera's live-video feed.
+#### Network Structure of ResNet50.
+![image](https://user-images.githubusercontent.com/71966691/99434366-b5332c00-2934-11eb-8bf3-e3dc7d829c33.png)
+Resnet: A residual neural network is an artificial neural network of a kind that builds on constructs known from pyramidal cells in the cerebral cortex. Residual neural networks do this by utilizing skip connections, or shortcuts to jump over some layers.
+#### Network Structure of Tiny_yolo_v3.
+![image](https://user-images.githubusercontent.com/71966691/99434605-fdeae500-2934-11eb-8ede-2e8a5468f644.png)
+TinyYolo_V3: defined a variation of the YOLO architecture called Tiny-YOLO. The Tiny-YOLO architecture is approximately 442% faster than its larger big brothers, achieving upwards of 244 FPS on a single GPU.
+
+### 4.5 Resources:
+Software: - VideoObjectDetection, opencv,  resnet50_coco_best_v2.0.1, ImageAI
+
+### 4.6 Potential Data Challenges and Risks
+Difficult to detect all the objects in video.
+Selecting the right confidence threshold value is also a challenge.
+
+### 4.7 Detailed Plan of Work
+•	Using OpenCV's  VideoCapture() function, upload the saved video. Parse it into ImageAI's detectObjectsFromVideo() and detectCustomObjectsFromVideo() functions.
+•	Output is another video with bounded boxes and probabilities and also a dataframe with all detected object list along with confidence level and other details.
+
+### 4.8 Pre-Processing Steps
+•	Download resnet50_coco_best_v2.0.1 and yolo-tiny.h5, save the models in the same location where video file is present.
+
+### 4.9 Machine Learning Modelling and Techniques Applied
+Object detection uses the following machine learning algorithm:
+•	It uses resnet50_coco_best_v2.0.1 to detect predefined objects under the module
+• Then uses Fast R-CNN network for extracting features from the proposed regions and outputting the bounding box and class labels.
+• Model used is CRNN (Convolutional Recurrent Neural Network). It further has three main components:
+     a.	Feature Extraction: Feature using Google ResNet.
+     b.	Sequence Labelling: Sequence Labelling is done to keep video frames in sequence and detect objects from each using Long Short Term Memory (LSTM) algorithm.
+
+### Task4_Result:
+![image](https://user-images.githubusercontent.com/71966691/99435762-97ff5d00-2936-11eb-938d-a23648f2c86c.png)
+Above image shows the dected objects using RetinaNet.
+![image](https://user-images.githubusercontent.com/71966691/99435803-ab122d00-2936-11eb-8c10-fb06f24e6a2d.png)
+Above table shows the list of detected objects using TinyYOLOV3. 
+Note: I have shown the output for different videos in above result.
+
+## Other Usefule Terms:
+
+Sampling Rate: Number of samples per second used to code the speech signal (usually 16000, i.e. 16 kHz for a bandwidth of 8 kHz). Telephone speech is sampled at 8 kHz. 16 kHz is generally regarded as sufficient for speech recognition and synthesis. The audio standards use sample rates of 44.1 kHz (Compact Disc) and 48 kHz (Digital Audio Tape). Note that signals must be filtered prior to sampling, and the maximum frequency that can be represented is half the sampling frequency. In practice a higher sample rate is used to allow for non-ideal filters.
+Sampling Resolution: Number of bits used to code each signal sample. Speech is normally stored in 16 bits. Telephony quality speech is sampled at 8 kHz with a 12bit dynamic range (stored in 8 bits with a non-linear function, i.e. A-law or U-law). The dynamic range of the ear is about 20 bits.
+Lexicon or pronunciation dictionary: A list of words with pronunciations. For a speech recognizer it includes all words known by the system, where each word has one or more pronunciations with associated probabilities
+Phoneme: An abstract representation of the smallest phonetic unit in a language which conveys a distinction in meaning. For example, the sounds /d/ and /t/ are separate phonemes in English because they distinguish words such as do and to. To illustrate phoneme differences across languages, the two /u/-like vowels in the French words tu and tout are not distinct phonemes in English, whereas the two /i/-like vowels in the English words seat and sit are not distinct phonemes in French.
+Pitch or F0: The pitch is the fundamental frequency of a speech signal. In practice, the pitch period can be obtained from the position of the maximum of the autocorrelation function of the signal.
+Fast Fourier transform: - A fast Fourier transform is an algorithm that computes the discrete Fourier transform of a sequence, or its inverse. Fourier analysis converts a signal from its original domain to a representation in the frequency domain and vice versa.
+
+## References
+https://nanonets.com/blo
+https://pypi.org/project/easyocr/
+https://github.com/JaidedAI/EasyOCR
+https://github.com/Uberi/speech_recognition
+https://deepspeech.readthedocs.io/en/v0.9.1/
+https://imageai.readthedocs.io/en/latest/video/ 
+https://github.com/githubharald/CTCWordBeamSearch
+https://en.wikipedia.org/wiki/Residual_neural_network
+https://www.easyproject.cn/easyocr/en/index.jsp#readme
+https://www.vocapia.com/speech-to-text-technology.html
+https://link.springer.com/article/10.1007/s13735-012-0016-2
+https://en.wikipedia.org/wiki/Optical_character_recognition
+https://www.youtube.com/watch?v=NRAqIjXaZvw&list=LL&index=3
+https://www.youtube.com/watch?v=vSwEbscJTKk&list=LL&index=9
+https://www.youtube.com/watch?v=P9GLDezYVX4&list=LL&index=12
+https://stackabuse.com/object-detection-with-imageai-in-python/
+https://analyticsindiamag.com/top-8-algorithms-for-object-detection/ 
+https://cloud.ibm.com/docs/speech-to-text?topic=speech-to-text-summary
+https://cloud.ibm.com/docs/speech-to-text?topic=speech-to-text-models
+https://machinelearningmastery.com/object-recognition-with-deep-learning/ 
+https://www.kaggle.com/shivamb/objects-bounding-boxes-using-resnet50-imageai
+https://github.com/OlafenwaMoses/ImageAI/blob/master/imageai/Detection/VIDEO.md 
+https://jonathan-hui.medium.com/object-detection-speed-and-accuracy-comparison-faster-r-cnn-r-fcn-ssd-and-yolo-5425656ae359
+https://www.ftdocs.com/new-blog/2018/7/10/why-you-need-ocr#:~:text=OCR%20can%20make%20your%20life%20easier%20by%3A&text=Reduce%20or%20eliminate%20costly%20data,and%20dramatically%20reducing%20processing%20times
+https://medium.com/@nandacoumar/optical-character-recognition-ocr-image-opencv-pytesseract-and-easyocr-62603ca4357#:~:text=Limitations%20of%20both%20Tesseract%20and%20EasyOCR%3A&text=If%20a%20document%20contains%20languages,distorted%20perspective%2C%20and%20complex%20background
 
