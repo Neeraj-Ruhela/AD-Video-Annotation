@@ -1,14 +1,15 @@
 Video attribution is a multi-label classification problem that aims at converting the video files into formats like audio, text, and image and extract the semantics of the detected object.
 
-Spending on digital advertising has risen each year even as TV and print advertising declines.
-Understanding the value of digital advertising requires understanding of how value is
-attributed to each activity. Understanding the true worth of these channels is key to any
-company’s success.
+Spending on digital advertising has risen each year even as TV and print advertising declines. Understanding the value of digital advertising requires understanding of how  value is attributed to each activity. Understanding the true worth of these channels is key to any company’s success.
+
 What an advertiser wants to know is how digital advertising really affects the bottom line.
 You spend more, do you get more? How do you know what works and what does not?
 Do combinations of advertising work best? How does advertising work?
+
 Now a days there are ample promotional videos available in the market to analyze so before launching a new product client has to analyze history of events and understand customer acceptance. By analyzing these videos and its sentiments client may strategize market penetration and get benefit out of it. To do so there are lots of man force required who will watch the video and create notes for the events in it.
+
 However due to lots of data it is a tedious job and involves cost. And also due to different skill set it is challenging. Goal is to automate the whole process of video annotation. 
+
 ![image](https://user-images.githubusercontent.com/71966691/99437588-b1090d80-2938-11eb-868a-a67307b4ed37.png)
 
 I have divided the projects in 4 tasks.
