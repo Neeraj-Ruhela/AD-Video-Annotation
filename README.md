@@ -10,7 +10,7 @@ However due to lots of data it is a tedious job and involves cost. And also due 
 
 ![image](https://user-images.githubusercontent.com/71966691/99437588-b1090d80-2938-11eb-868a-a67307b4ed37.png)
 
-I have divided the projects in 4 tasks.
+I have divided the projects in below mentioned tasks.
 
 ## TASK 1: - Frame and Audio Extraction
 •	Video frame extraction, Audio extraction, Grey scaling extracted video frames.
